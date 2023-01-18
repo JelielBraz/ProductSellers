@@ -1,4 +1,4 @@
-package com.ProductSellers.ProductSellers;
+package com.productsellers.productsellers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
