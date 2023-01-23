@@ -3,10 +3,12 @@ package com.productsellers.productsellers.controller;
 import com.productsellers.productsellers.model.Product;
 import com.productsellers.productsellers.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "product/")
@@ -21,8 +23,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> findAll()
+    public Page<Product> findAll(@PageableDefault Pageable pageable)
     {
-        return productService.findAll();
+        return productService.findAll(pageable);
     }
 }
