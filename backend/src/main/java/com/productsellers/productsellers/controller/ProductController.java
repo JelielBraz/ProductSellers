@@ -34,9 +34,14 @@ public class ProductController {
         productService.deleteById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
         Product save = productService.updateProduct(id, product);
         return ResponseEntity.ok(save);
+    }
+
+    @GetMapping("{id}")
+    public Product findById(@PathVariable Long id){
+        return productService.findById(id);
     }
 }

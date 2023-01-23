@@ -26,11 +26,15 @@ public class ProductService {
 
     public Product updateProduct(Long id, Product newProduct)
     {
-        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+        Product product = findById(id);
 
         product.setName(newProduct.getName());
 
         return productRepository.save(product);
+    }
+
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     public Product save(Product product) {
