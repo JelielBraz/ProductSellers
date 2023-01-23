@@ -1,5 +1,6 @@
 package com.productsellers.productsellers.service;
 
+import com.productsellers.productsellers.exceptions.ProductNotFoundException;
 import com.productsellers.productsellers.model.Product;
 import com.productsellers.productsellers.repository.ProductRepository;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,15 @@ public class ProductService {
 
     public void deleteById(Long productId) {
         productRepository.deleteById(productId);
+    }
+
+    public Product updateProduct(Long id, Product newProduct)
+    {
+        Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
+
+        product.setName(newProduct.getName());
+
+        return productRepository.save(product);
     }
 
     public Product save(Product product) {
