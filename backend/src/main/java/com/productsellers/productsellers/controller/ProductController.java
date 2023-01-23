@@ -28,9 +28,15 @@ public class ProductController {
         return productService.findAll(pageable);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public void deleteById(@PathVariable Long id)
     {
         productService.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        Product save = productService.updateProduct(id, product);
+        return ResponseEntity.ok(save);
     }
 }
