@@ -27,4 +27,10 @@ public class ProductController {
     {
         return productService.findAll(pageable);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id)
+    {
+        productService.deleteById(id);
+    }
 }

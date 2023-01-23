@@ -19,6 +19,9 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
+    public void deleteById(Long productId) {
+        productRepository.deleteById(productId);
+    }
 
     public Product save(Product product) {
         return productRepository.save(product);
